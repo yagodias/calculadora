@@ -1,31 +1,62 @@
-﻿
-class calc
+﻿internal class Program
 {
-    static void Main()
+    private const string ADD = "add";
+    private const string DIV = "div";
+    private const string MUL = "mul";
+    private const string SUB = "sub";
+
+    private static float Calculate(float[] parameters, string operation)
     {
-        Console.WriteLine("First number??");
-        var firstNum = int.Parse(Console.ReadLine());
+        float result = parameters[0];
 
-        Console.WriteLine("Wich operation??");
-        var operation = Console.ReadLine();
-
-        Console.WriteLine("Second number");
-        int secondNum = int.Parse(Console.ReadLine());
-
-        switch (operation)
+        switch (operation.ToLower())
         {
-            case "plus":
-                Console.WriteLine(firstNum + secondNum);
+            case ADD:
+                for (int i = 1; i < parameters.Length; i++)
+                    result += parameters[i];
                 break;
-            case "less":
-                Console.WriteLine(firstNum - secondNum);
+
+            case DIV:
+                for (int i = 1; i < parameters.Length; i++)
+                    result /= parameters[i];
                 break;
-            case "multi":
-                Console.WriteLine(firstNum * secondNum);
+
+            case MUL:
+                for (int i = 1; i < parameters.Length; i++)
+                    result *= parameters[i];
                 break;
-            case "div":
-                Console.WriteLine(firstNum / secondNum);
+
+            case SUB:
+                for (int i = 1; i < parameters.Length; i++)
+                    result -= parameters[i];
                 break;
+
+            default:
+                return result;
         }
+
+        return result;
+    }
+
+    private static T? GetConsoleInput<T>(string inputText)
+    {
+        Console.WriteLine(inputText);
+
+        var input = Console.ReadLine();
+
+        return (T?)Convert.ChangeType(input, typeof(T));
+    }
+
+    private static void Main()
+    {
+        var firstNum = GetConsoleInput<int>("First number??");
+        var operation = GetConsoleInput<string>("Wich operation??");
+        var secondNum = GetConsoleInput<int>("Second number??");
+
+        var parameters = new float[] { firstNum, secondNum };
+
+        var result = Calculate(parameters, operation!);
+
+        Console.WriteLine("Result: {0}", result);
     }
 }
