@@ -1,4 +1,4 @@
-﻿internal class calc
+﻿internal class Program
 {
     private static float Calculate(float[] parameters, string? operation)
     {
