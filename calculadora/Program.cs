@@ -1,29 +1,34 @@
 ﻿internal class Program
 {
-    private static float Calculate(float[] parameters, string? operation)
+    private const string ADD = "add";
+    private const string DIV = "div";
+    private const string MUL = "mul";
+    private const string SUB = "sub";
+
+    private static float Calculate(float[] parameters, string operation)
     {
         float result = parameters[0];
 
-        switch (operation)
+        switch (operation.ToLower())
         {
-            case "add":
+            case ADD:
                 for (int i = 1; i < parameters.Length; i++)
                     result += parameters[i];
                 break;
 
-            case "sub":
+            case DIV:
                 for (int i = 1; i < parameters.Length; i++)
-                    result -= parameters[i];
+                    result /= parameters[i];
                 break;
 
-            case "mul":
+            case MUL:
                 for (int i = 1; i < parameters.Length; i++)
                     result *= parameters[i];
                 break;
 
-            case "div":
+            case SUB:
                 for (int i = 1; i < parameters.Length; i++)
-                    result /= parameters[i];
+                    result -= parameters[i];
                 break;
 
             default:
