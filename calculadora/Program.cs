@@ -55,7 +55,7 @@
 
         var parameters = new float[] { firstNum, secondNum };
 
-        var result = Calculate(parameters, operation);
+        var result = Calculate(parameters, operation!);
 
         Console.WriteLine("Result: {0}", result);
     }
