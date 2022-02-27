@@ -5,27 +5,32 @@ namespace Calculadora.Application.Calculos
 {
     public class CalculadoraSimples : ICalculo
     {
+        private const string ADD = "add";
+
+        private const string DIV = "div";
+
+        private const string MUL = "mul";
+
+        private const string SUB = "sub";
+
         public void Execute()
         {
             var firstNum = InputHelper.GetConsoleInput<int>("First number??");
             var operation = InputHelper.GetConsoleInput<string>("Wich operation??");
             var secondNum = InputHelper.GetConsoleInput<int>("Second number??");
 
-            var parameters = new float[] { firstNum, secondNum };
+            var parameters = new double[] { firstNum, secondNum };
 
             var result = Calculate(parameters, operation!);
 
             Console.WriteLine("Result: {0}", result);
+
+            //return result;
         }
 
-        private const string ADD = "add";
-        private const string DIV = "div";
-        private const string MUL = "mul";
-        private const string SUB = "sub";
-
-        private static float Calculate(float[] parameters, string operation)
+        private double Calculate(double[] parameters, string operation)
         {
-            float result = parameters[0];
+            double result = parameters[0];
 
             switch (operation.ToLower())
             {
