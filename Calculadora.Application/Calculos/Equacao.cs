@@ -12,20 +12,19 @@ namespace Calculadora.Application.Calculos
             var c = InputHelper.GetConsoleInput<double>("Digite C: ");
 
             (double X1, double X2) = CalcularResultado(a, b, c);
-            
+
             Console.WriteLine("Resultado do X1 = " + X1);
             Console.WriteLine("Resultado do X2 = " + X2);
-
         }
 
-        public double CalcularDelta(double A, double B, double C)
+        private double CalcularDelta(double A, double B, double C)
         {
             var _delta = Math.Pow(B, 2) - 4 * A * C;
 
             return _delta;
         }
 
-        public (double X1, double X2) CalcularResultado(double A, double B, double C)
+        private (double X1, double X2) CalcularResultado(double A, double B, double C)
         {
             var _delta = CalcularDelta(A, B, C);
             var raizDelta = Math.Sqrt(_delta);

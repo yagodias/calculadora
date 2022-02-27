@@ -5,6 +5,14 @@ namespace Calculadora.Application.Calculos
 {
     public class CalculadoraSimples : ICalculo
     {
+        private const string ADD = "add";
+
+        private const string DIV = "div";
+
+        private const string MUL = "mul";
+
+        private const string SUB = "sub";
+
         public void Execute()
         {
             var firstNum = InputHelper.GetConsoleInput<int>("First number??");
@@ -18,12 +26,7 @@ namespace Calculadora.Application.Calculos
             Console.WriteLine("Result: {0}", result);
         }
 
-        private const string ADD = "add";
-        private const string DIV = "div";
-        private const string MUL = "mul";
-        private const string SUB = "sub";
-
-        private static float Calculate(float[] parameters, string operation)
+        private float Calculate(float[] parameters, string operation)
         {
             float result = parameters[0];
 
