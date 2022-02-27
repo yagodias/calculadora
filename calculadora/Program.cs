@@ -4,10 +4,9 @@ internal class Program
 {
     private static void Main()
     {
-        var menu = new Menu();
+        var operation = new Menu()
+            .GetOperation();
 
-        var op = menu.Display();
-
-        op.Execute();
+        operation.Execute();
     }
 }

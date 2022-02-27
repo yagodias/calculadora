@@ -6,25 +6,21 @@ namespace calculadora
 {
     internal class Menu
     {
-        public ICalculo Display()
+        public ICalculo GetOperation()
         {
             Console.WriteLine("Selecione uma opção:");
             Console.WriteLine("1 = Calculadora");
             Console.WriteLine("2 = Equações");
 
             int option = InputHelper.GetConsoleInput<int>();
-            ICalculo op;
 
-            switch (option)
+            ICalculo op = option switch
             {
-                case 1: op = new CalculadoraSimples();
-                    break;
+                1 => new CalculadoraSimples(),
+                2 => new Equacao(),
+                _ => throw new Exception("Opção inválida"),
+            };
 
-                case 2: op = new Equacao();
-                    break;
-
-                default: throw new Exception("Opção inválida");
-            }
             return op;
         }
     }
