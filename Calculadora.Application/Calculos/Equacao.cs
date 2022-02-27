@@ -11,28 +11,27 @@ namespace Calculadora.Application.Calculos
             var b = InputHelper.GetConsoleInput<double>("Digite B: ");
             var c = InputHelper.GetConsoleInput<double>("Digite C: ");
 
-            (double X1, double X2) = CalcularResultado(a, b, c);
+            (double x1, double x2) = CalcularResultado(a, b, c);
 
-            Console.WriteLine("Resultado do X1 = " + X1);
-            Console.WriteLine("Resultado do X2 = " + X2);
+            Console.WriteLine("Resultado:\n\tx1 {0}\n\tx2 {1}", x1, x2);
         }
 
-        private double CalcularDelta(double A, double B, double C)
+        private double CalcularDelta(double a, double b, double c)
         {
-            var _delta = Math.Pow(B, 2) - 4 * A * C;
+            var delta = Math.Pow(b, 2) - 4 * a * c;
 
-            return _delta;
+            return delta;
         }
 
-        private (double X1, double X2) CalcularResultado(double A, double B, double C)
+        private (double X1, double X2) CalcularResultado(double a, double b, double c)
         {
-            var _delta = CalcularDelta(A, B, C);
-            var raizDelta = Math.Sqrt(_delta);
+            var delta = CalcularDelta(a, b, c);
+            var raizDelta = Math.Sqrt(delta);
 
-            var X1 = (-B + raizDelta) / (2 * A);
-            var X2 = (-B - raizDelta) / (2 * A);
+            var x1 = (-b + raizDelta) / (2 * a);
+            var x2 = (-b - raizDelta) / (2 * a);
 
-            return (X1, X2);
+            return (x1, x2);
         }
     }
 }
