@@ -1,9 +1,10 @@
 ﻿using Calculadora.Application.Interfaces;
+using Calculadora.Application.Resultados;
 using Calculadora.Shared.Helpers;
 
 namespace Calculadora.Application.Calculos
 {
-    public class CalculadoraSimples : ICalculo
+    public class CalculadoraSimples : ICalculo <CalculadoraSimplesResult>
     {
         private const string ADD = "add";
 
@@ -12,21 +13,6 @@ namespace Calculadora.Application.Calculos
         private const string MUL = "mul";
 
         private const string SUB = "sub";
-
-        public void Execute()
-        {
-            var firstNum = InputHelper.GetConsoleInput<int>("First number??");
-            var operation = InputHelper.GetConsoleInput<string>("Wich operation??");
-            var secondNum = InputHelper.GetConsoleInput<int>("Second number??");
-
-            var parameters = new double[] { firstNum, secondNum };
-
-            var result = Calculate(parameters, operation!);
-
-            Console.WriteLine("Result: {0}", result);
-
-            //return result;
-        }
 
         private double Calculate(double[] parameters, string operation)
         {
@@ -59,6 +45,21 @@ namespace Calculadora.Application.Calculos
             }
 
             return result;
+        }
+
+        public CalculadoraSimplesResult Execute()
+        {
+            var firstNum = InputHelper.GetConsoleInput<int>("First number??");
+            var operation = InputHelper.GetConsoleInput<string>("Wich operation??");
+            var secondNum = InputHelper.GetConsoleInput<int>("Second number??");
+
+            var parameters = new double[] { firstNum, secondNum };
+
+            var result = Calculate(parameters, operation!);
+
+            Console.WriteLine("Result: {0}", result);
+
+            return new CalculadoraSimplesResult(result);
         }
     }
 }

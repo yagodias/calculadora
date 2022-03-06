@@ -1,7 +1,9 @@
-﻿namespace Calculadora.Application.Interfaces
+﻿using Calculadora.Application.Resultados;
+
+namespace Calculadora.Application.Interfaces
 {
-    public interface ICalculo
+    public interface ICalculo <TResultado> where TResultado : BaseResult
     {
-        void Execute();
+        TResultado Execute();
     }
 }

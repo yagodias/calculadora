@@ -1,8 +1,8 @@
 ﻿namespace Calculadora.Application.Resultados
 {
-    public class Quadratic
+    public class QuadraticResult : BaseResult
     {
-        public Quadratic(double a, double b, double c)
+        public QuadraticResult(double a, double b, double c)
         {
             A = a;
             B = b;

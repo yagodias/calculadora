@@ -14,14 +14,21 @@ namespace calculadora
             Console.WriteLine("2 = Equações");
 
             var option = InputHelper.GetConsoleInput<int>();
-            
-            ICalculo op = option switch
-            {
-                1 => new CalculadoraSimples(),
-                2 => new Equacao(),
-                _ => throw new Exception("Opção inválida"),
-            };
 
-            op.Execute();}
+            switch (option)
+            {
+                case 1:
+                    ICalculo<CalculadoraSimplesResult> op1 = new CalculadoraSimples();
+                    op1.Execute();
+                    break;
+
+                case 2:
+                    ICalculo<QuadraticResult> op2 = new Equacao();
+                    op2.Execute();
+                    break;
+
+                default: throw new ArgumentException("Opção inválida");
+            }
+        }
     }
 }
