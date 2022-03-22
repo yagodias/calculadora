@@ -12,6 +12,7 @@ namespace calculadora
             Console.WriteLine("Selecione uma opção:");
             Console.WriteLine("1 = Calculadora");
             Console.WriteLine("2 = Equações");
+            Console.WriteLine("3 = Matriz Inversa");
 
             var option = InputHelper.GetConsoleInput<int>();
 
@@ -25,6 +26,11 @@ namespace calculadora
                 case 2:
                     ICalculo<QuadraticResult> op2 = new Equacao();
                     op2.Execute();
+                    break;
+
+                case 3:
+                    ICalculo<MatrixResult> op3 = new CalcMatriz();
+                    op3.Execute();
                     break;
 
                 default: throw new ArgumentException("Opção inválida");
